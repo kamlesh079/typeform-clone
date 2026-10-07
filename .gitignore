@@ -3,3 +3,8 @@ backend/typeform_clone.db
 frontend/node_modules/
 frontend/.next/
 .DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
