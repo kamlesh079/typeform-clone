@@ -1,0 +1,5 @@
+backend/.venv/
+backend/typeform_clone.db
+frontend/node_modules/
+frontend/.next/
+.DS_Store
