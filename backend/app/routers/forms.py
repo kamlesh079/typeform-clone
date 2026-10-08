@@ -110,8 +110,18 @@ def update_question(question_id: int, payload: QuestionIn, db: Session = Depends
 @router.delete("/questions/{question_id}", status_code=204)
 def delete_question(question_id: int, db: Session = Depends(get_db)):
     q = db.get(Question, question_id)
-    if not q: raise HTTPException(404, "Question not found")
-    db.delete(q); db.commit()
+    if not q:raise HTTPException(404, "Question not found")
+    form_id = q.form_id
+    db.delete(q)
+    db.flush()
+    remaining_questions = db.scalars(
+        select(Question)
+        .where(Question.form_id == form_id)
+        .order_by(Question.position, Question.id)
+    ).all()
+    for index, question in enumerate(remaining_questions):
+        question.position = index
+    db.commit()
 
 
 @router.put("/forms/{form_id}/questions/reorder")
