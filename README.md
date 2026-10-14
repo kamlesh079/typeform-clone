@@ -1,4 +1,4 @@
-# Formly — Typeform Clone
+# Formly — Typeform Clone [Link](https://typeform-clone-gilt-three.vercel.app/)
 
 A full-stack Typeform-inspired form builder developed as an SDE Fullstack
 assignment.
